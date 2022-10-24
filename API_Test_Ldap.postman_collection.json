@@ -1,0 +1,113 @@
+{
+	"info": {
+		"_postman_id": "cd41673c-a11c-47f8-b12f-9769b23ab55e",
+		"name": "API_Test_Ldap",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5150526"
+	},
+	"item": [
+		{
+			"name": "TC_02_Log_Incorrecto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Verificar que estatus sea 200\", () =>\r",
+							"{\r",
+							"    pm.response.to.have.status(200)\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Verificar que el resultado sea false\", ()=> {\r",
+							"    pm.expect(pm.response.text()).to.include(\"false\");\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://148.202.33.41:8090/ldap/validar?cn=99&pwd=1324354657",
+					"protocol": "http",
+					"host": [
+						"148",
+						"202",
+						"33",
+						"41"
+					],
+					"port": "8090",
+					"path": [
+						"ldap",
+						"validar"
+					],
+					"query": [
+						{
+							"key": "cn",
+							"value": "99"
+						},
+						{
+							"key": "pwd",
+							"value": "1324354657"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TC_01_Login_Correcto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Vericicar que muestra codigo 200\" , () => {\r",
+							"    pm.response.to.have.status(200) \r",
+							"}\r",
+							");\r",
+							"\r",
+							"pm.test(\"Verificar resultado sea true\", ()=> {\r",
+							"    \r",
+							"    pm.expect(pm.response.text()).to.include('true');\r",
+							"} )"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://148.202.33.41:8090/ldap/validar?cn=2915154&pwd=1324354657",
+					"protocol": "http",
+					"host": [
+						"148",
+						"202",
+						"33",
+						"41"
+					],
+					"port": "8090",
+					"path": [
+						"ldap",
+						"validar"
+					],
+					"query": [
+						{
+							"key": "cn",
+							"value": "2915154"
+						},
+						{
+							"key": "pwd",
+							"value": "1324354657"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
